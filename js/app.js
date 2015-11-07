@@ -71,6 +71,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     url: '/match',
     templateUrl: 'templates/match.html'
   })
+  
+  .state('tab.waiting_success', {
+    url: '/waiting_success',
+    templateUrl: 'templates/waiting_success.html'
+  })
 
   .state('notification', {
     url: '/notification',
