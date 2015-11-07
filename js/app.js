@@ -79,6 +79,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       nextUser: (PossibleMatches) => PossibleMatches.next()
     }
   })
+  
+  .state('tab.waiting_success', {
+    url: '/waiting_success',
+    templateUrl: 'templates/waiting_success.html'
+  })
 
   .state('notification', {
     url: '/notification',

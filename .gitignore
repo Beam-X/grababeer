@@ -3,3 +3,4 @@ www/templates/*.html
 node_modules
 platforms
 resources
+.DS_Store

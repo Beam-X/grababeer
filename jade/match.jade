@@ -1,12 +1,14 @@
 ion-view(hide-nav-bar="true")
-  ion-content.padding
-    .list.card.center
+  ion-content.padding.defaultBkg
+    .list.card.matchProfileCard.center
       .item.item-body
         img.full-image.matchProfilePhoto(ng-src="{{::user.picture}}")
-        h1 {{::user.name}}
-        p {{::user.info}}
+        h1.profileName {{::user.name}}
+        p.profileInfo {{::user.info}}
         .row.matchBtnContainer
           .col.col-50
-            button.button.button-stable.matchBtn.icon.ion-close-round(ng-click="ignore(user)")
+            a.matchBtn.matchBtn--no.item.item-icon-left(ng-click="ignore(user)")
+              i.icon.ion-close-round
           .col.col-50
-            button.button.button-assertive.matchBtn.icon.ion-checkmark-round(ng-click="match(user)")
+            a.matchBtn.matchBtn--yes.item.item-icon-right(ng-click="match(user)")
+              i.icon.ion-checkmark-round

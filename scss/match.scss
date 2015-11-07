@@ -1,8 +1,50 @@
+@import 'variables';
+
+.matchProfileCard {
+  margin-top: 4.5em;
+  padding-top: 1em;
+  padding-bottom: .7em;
+}
+
 .matchProfilePhoto {
   border-radius: 50%;
   height: 70%;
   width: 70%;
 }
+
+.profileName {
+  font-weight: $fontWeight-light;
+}
+
 .matchBtn {
-  width: 5em;
+  background-size: cover;
+  background-position: center left;
+  height: 3em;
+  width: 10em;
+  display: block;
+}
+
+.matchBtn .icon {
+  color: $color-white;
+  font-size: $fontSize-larger;
+}
+
+.matchBtn--no {
+  background-image: url("/img/no_btn.png");
+  padding-left: .1em;
+  text-align: left;
+}
+
+.matchBtn--no .icon {
+  left: .7em
+}
+
+.matchBtn--yes {
+  background-image: url("/img/yes_btn.png");
+  padding-right: .1em;
+  text-align: right;
+}
+
+.matchBtn--yes .icon {
+  right: .7em;
 }
