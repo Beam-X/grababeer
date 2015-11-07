@@ -9100,7 +9100,8 @@ a.button {
 .actionBackground {
   background-image: url("/img/hoian.png");
   background-size: cover;
-  background-position: center center; }
+  background-position: center center;
+  height: 100%; }
 
 .actionContainer {
   padding-top: 70%; }

@@ -48,9 +48,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-  .state('action', {
-    url: '/action',
-    templateUrl: 'templates/action.html'
+  .state('tab.home', {
+    url: '/home',
+    templateUrl: 'templates/home.html'
   })
 
   .state('match', {
@@ -96,13 +96,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     url: '/account',
     views: {
       'tab-account': {
-        templateUrl: 'templates/tab-account.html',
+        templateUrl: 'templates/profile.html',
         controller: 'AccountCtrl'
       }
     }
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/tab/home');
 
 });
