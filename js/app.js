@@ -75,6 +75,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     templateUrl: 'templates/notification.html'
   })
 
+  .state('tab.success', {
+    url: '/success',
+    templateUrl: 'templates/success.html'
+  })
+
   .state('tab.chats', {
       url: '/chats',
       views: {
