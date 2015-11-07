@@ -52,6 +52,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     url: '/match',
     templateUrl: 'templates/match.html'
   })
+  
+  .state('notification', {
+    url: '/notification',
+    templateUrl: 'templates/notification.html'
+  })
 
 
   .state('tab.chats', {
