@@ -2,8 +2,8 @@ ion-view(view-title="Profile")
   ion-content
     ion-list
       ion-item.item-avatar
-        img(ng-src="{{user.picture}}")
-        h2 {{user.name}}
+        img(ng-src="{{currentUser.picture}}")
+        h2 {{currentUser.name}}
       ion-item.item-divider Basic Information
       ion-item
         span Age
@@ -32,3 +32,5 @@ ion-view(view-title="Profile")
             input(type="checkbox")
             .track
               .handle
+      ion-item
+        button.button.button-positive(ng-click="save(user)") Save

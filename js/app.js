@@ -33,12 +33,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   $stateProvider
 
   // setup an abstract state for the tabs directive
-  .state('tab', {
-    url: '/tab',
-    abstract: true,
-    templateUrl: 'templates/tabs.html'
-  })
-
   .state('accounts', {
     url: '/accounts',
     templateUrl: 'templates/accounts.html',
@@ -51,18 +45,26 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-  .state('profile', {
+  .state('tab', {
+    url: '/tab',
+    abstract: true,
+    templateUrl: 'templates/tabs.html',
+    controller: 'TabsCtrl',
+    resolve: {
+      currentUser: (Session)=> Session.currentUser()
+    }
+  })
+
+  .state('tab.profile', {
     url: '/profile',
     templateUrl: 'templates/profile.html',
     controller: 'ProfileCtrl',
-    resolve: {
-      user: ($rootScope) => $rootScope.currentUser
-    }
   })
 
   .state('tab.home', {
     url: '/home',
-    templateUrl: 'templates/home.html'
+    templateUrl: 'templates/home.html',
+    controller: 'HomeCtrl',
   })
 
   .state('tab.match', {
@@ -105,21 +107,22 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/accounts');
+  $urlRouterProvider.otherwise('/tab/home');
 })
 
-.run(function($log, $rootScope, $state){
+.run(function($log, $rootScope, $state, Session){
   $log.debug('RUN')
   $rootScope.$on('$stateChangeStart', function(event, toState, fromState, fromParams){
     $log.debug('$stateChangeStart')
     $log.debug('toState', toState)
     $log.debug('fromState', fromState)
 
+    $log.debug('currentUser', Session.currentUser())
     if (toState.data && toState.data.skipAuth){
       //continue
     }
     else {
-      if (!$rootScope.currentUser){
+      if (!Session.currentUser()){
         $log.debug('forbidden');
         event.preventDefault();
         $state.go('accounts');
