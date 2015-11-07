@@ -104,10 +104,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     $log.debug('$stateChangeError', error)
   })
 
-  $rootScope.$on('$stateChangeStart', (event, toState, fromState, fromParams) => {
-    $log.debug('$stateChangeStart')
-    $log.debug('toState', toState)
-    $log.debug('fromState', fromState)
+  $rootScope.$on('$stateChangeSuccess', (event, toState, toParams) => {
+    $log.debug('$stateChangeSuccess');
+    $log.debug('toState', toState.name);
+    $log.debug('toParams', toParams);
+  })
+
+  $rootScope.$on('$stateChangeStart', (event, toState, toParams, fromState, fromParams) => {
+    $log.debug('$stateChangeStart');
+    $log.debug('toState', toState);
+    $log.debug('toParams', toParams);
 
     $log.debug('currentUser', Session.currentUser())
     if (toState.data && toState.data.skipAuth){

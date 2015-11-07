@@ -33,7 +33,7 @@ angular.module('starter.controllers', [])
 
   function next(){
     if (nextUser)
-      $state.go('.', {user: nextUser.id})
+      $state.go('^.match', {user: nextUser.id})
     else
       $state.go('^.home')
   }
