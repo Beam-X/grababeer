@@ -8,6 +8,7 @@ var rename = require('gulp-rename');
 var sh = require('shelljs');
 var jade = require('gulp-jade');
 var babel = require('gulp-babel');
+var plumber = require('gulp-plumber');
 
 var paths = {
   sass: ['./scss/**/*.scss'],
@@ -39,11 +40,18 @@ gulp.task('jade', function (done) {
 
 gulp.task('babel', function(done) {
   gulp.src(paths.js)
+    .pipe(plumber({
+      errorHandler: function(err){
+        gutil.beep();
+        console.log(err);
+        this.emit('end');
+      }
+    }))
     .pipe(babel({
       presets: ['es2015']
     }))
     .pipe(gulp.dest('./www/js/'))
-    .on('end', done);
+    .on('end', done)
 });
 
 gulp.task('watch', function() {
