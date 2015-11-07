@@ -53,7 +53,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     templateUrl: 'templates/home.html'
   })
 
-  .state('match', {
+  .state('tab.match', {
     url: '/match',
     templateUrl: 'templates/match.html'
   })
