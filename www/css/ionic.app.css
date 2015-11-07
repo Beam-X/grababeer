@@ -9088,3 +9088,19 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
+
+.center {
+  text-align: center; }
+
+.header {
+  color: white;
+  font-size: 2.5em;
+  font-weight: 300; }
+
+.actionBackground {
+  background-image: url("/img/hoian.png");
+  background-size: cover;
+  background-position: center center; }
+
+.actionContainer {
+  padding-top: 70%; }

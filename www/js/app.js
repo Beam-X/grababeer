@@ -34,6 +34,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services']).
   }).state('profile', {
     url: '/profile',
     templateUrl: 'templates/profile.html'
+  }).state('action', {
+    url: '/action',
+    templateUrl: 'templates/action.html'
   }).state('tab.chats', {
     url: '/chats',
     views: {

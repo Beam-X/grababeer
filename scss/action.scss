@@ -1,0 +1,17 @@
+@import 'variables';
+
+.header {
+  color: $color-white;
+  font-size: $fontSize-jumbo;
+  font-weight: $fontWeight-light;
+}
+
+.actionBackground {
+  background-image: url('/img/hoian.png');
+  background-size: cover;
+  background-position: center center;
+}
+
+.actionContainer {
+  padding-top: 70%;
+}
