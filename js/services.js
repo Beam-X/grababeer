@@ -35,6 +35,17 @@ angular.module('starter.services', [])
       name: 'Adam',
       picture: 'img/adam.jpg',
       age: 24,
+      music: [
+        { name: "Jazz", checked: false },
+        { name: "R&B", checked: true },
+        { name: "Rock", checked: false },
+      ],
+      sports: [
+        { name: "Soccer", checked: true},
+        { name: "Basketball", checked: true},
+        { name: "Rugby", checked: true},
+      ],
+      others: 'Travelling, Jamming'
     },
     {
       id: 2,
