@@ -25,7 +25,7 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('MatchCtrl', function($log, $scope, $state, user, nextUser){
+.controller('MatchCtrl', function($log, $scope, $state, user, nextUser, Notifications){
   $log.debug('>>MatchCtrl', user)
   $log.debug('nextUser', nextUser)
 
@@ -45,6 +45,7 @@ angular.module('starter.controllers', [])
 
   $scope.match = (user) => {
     $log.debug('match', user);
+    Notifications.requestMatch($scope.currentUser, user)
     next()
   }
 })

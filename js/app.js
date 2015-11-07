@@ -73,11 +73,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     controller: 'MatchCtrl',
     resolve: {
       user: ($log, $stateParams, Users) => {
-        $log.debug('resolve params', $stateParams)
-        let user = Users.get(parseInt($stateParams.user))
-
-        $log.debug("DUPA", user)
-        return user
+        return Users.get(parseInt($stateParams.user))
       },
 
       nextUser: (PossibleMatches) => PossibleMatches.next()
@@ -116,21 +112,24 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 .run(function($log, $rootScope, $state, Session){
   $log.debug('RUN')
   $rootScope.$on('$stateChangeError', (event, toState, toParams, fromState, fromParams, error) => {
-    $log.debug('$stateChangeError', error)
+    $log.debug('$stateChangeError');
+    $log.debug('  toState', toState.name);
+    $log.debug('  toParams', toParams);
+    $log.debug('  error', error)
   })
 
   $rootScope.$on('$stateChangeSuccess', (event, toState, toParams) => {
     $log.debug('$stateChangeSuccess');
-    $log.debug('toState', toState.name);
-    $log.debug('toParams', toParams);
+    $log.debug('  toState', toState.name);
+    $log.debug('  toParams', toParams);
   })
 
   $rootScope.$on('$stateChangeStart', (event, toState, toParams, fromState, fromParams) => {
     $log.debug('$stateChangeStart');
-    $log.debug('toState', toState);
-    $log.debug('toParams', toParams);
+    $log.debug('  toState', toState.name);
+    $log.debug('  toParams', toParams);
 
-    $log.debug('currentUser', Session.currentUser())
+    $log.debug('  currentUser', Session.currentUser())
     if (toState.data && toState.data.skipAuth){
       //continue
     }
