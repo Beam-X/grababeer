@@ -1,34 +1,37 @@
-ion-view(view-title="Profile")
+ion-view.profileContainer(view-title="Profile")
   ion-content
     ion-list
       ion-item.item-avatar
         img(ng-src="{{user.picture}}")
-        h2 {{user.name}}
+        h1 {{user.name}}
       ion-item.item-divider Basic Information
-      ion-item
+      ion-item.item.item-icon-right
         span Age
         span.item-note 28
-      ion-item Language
+        i.icon.ion-chevron-right
+      ion-item.item.item-icon-right
+        span Language
         span.item-note English, French
+        i.icon.ion-chevron-right
 
       //- ----------- Music
       ion-item.item-divider Your Favourite Music
-      - var all_genres = ['Jazz', 'R&B', 'Pop', 'Rock']
-      each genre in all_genres 
-        ion-item.item-toggle
-          = genre 
-          label.toggle.toggle-energized
-            input(type="checkbox")
-            .track
-              .handle
+      ion-toggle(ng-repeat="genre in user.music" ng-model="genre.checked" toggle-class="toggle-energized" ng-checked="genre.checked")
+        {{genre.name}}
 
       //- ----------- Sports
       ion-item.item-divider Your Favourite Sports
-      - var all_sports = ['Soccer', 'Basketball', 'Cricket', 'American Football', 'Rugby']
-      each sport in all_sports
-        ion-item.item-toggle
-          = sport 
-          label.toggle.toggle-energized
-            input(type="checkbox")
-            .track
-              .handle
+      ion-toggle(ng-repeat="sport in user.sports" ng-model="sport.checked" toggle-class="toggle-energized" ng-checked="sport.checked")
+        {{sport.name}}
+      
+      ion-item.item-divider Other Interests
+      ion-item.item.item-icon-right
+        {{user.others}}
+        i.icon.ion-chevron-right
+
+      ion-item.profileBtnContainer
+        .row
+          .col.col-30
+            a.button.button-block.button-stable(href="#") Cancel
+          .col.col-70
+            a.button.button.button-block.button-energized(href="#/tab/home") Save

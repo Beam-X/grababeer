@@ -1,0 +1,14 @@
+@import 'variables';
+
+.profileContainer .ion-chevron-right {
+  opacity: .4;
+}
+
+.profileContainer h1 {
+  font-weight: $fontWeight-light;
+  margin-top: 0;
+}
+
+.profileBtnContainer {
+  padding: 0;
+}

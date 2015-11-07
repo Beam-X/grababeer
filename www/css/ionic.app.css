@@ -9113,3 +9113,13 @@ a.button {
 
 .matchBtn {
   width: 5em; }
+
+.profileContainer .ion-chevron-right {
+  opacity: .4; }
+
+.profileContainer h1 {
+  font-weight: 300;
+  margin-top: 0; }
+
+.profileBtnContainer {
+  padding: 0; }
