@@ -38,8 +38,10 @@ gulp.task('jade', function (done) {
 });
 
 gulp.task('babel', function(done) {
-  gulp.src('./js/*.js')
-    .pipe(babel())
+  gulp.src(paths.js)
+    .pipe(babel({
+      presets: ['es2015']
+    }))
     .pipe(gulp.dest('./www/js/'))
     .on('end', done);
 });

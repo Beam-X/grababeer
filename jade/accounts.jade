@@ -1,0 +1,8 @@
+ion-view(view-title="Account")
+  ion-content
+    ion-list
+      ion-item.item-thumbnail-left(ng-repeat="user in users")
+        img(ng-src="{{::user.picture}}")
+        h2 {{::user.name}}
+        
+

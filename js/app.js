@@ -42,20 +42,29 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     url: '/profile',
     templateUrl: 'templates/profile.html'
   })
-  
+
   .state('action', {
     url: '/action',
     templateUrl: 'templates/action.html'
   })
-  
+
   .state('match', {
     url: '/match',
     templateUrl: 'templates/match.html'
   })
-  
+
   .state('notification', {
     url: '/notification',
     templateUrl: 'templates/notification.html'
+  })
+
+  .state('accounts', {
+    url: '/accounts',
+    templateUrl: 'templates/accounts.html',
+    controller: 'AccountsCtrl',
+    resolve: {
+      users: (Users) => Users.list()
+    }
   })
 
 

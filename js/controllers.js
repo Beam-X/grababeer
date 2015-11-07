@@ -25,4 +25,8 @@ angular.module('starter.controllers', [])
   $scope.settings = {
     enableFriends: true
   };
+})
+
+.controller('AccountsCtrl', function($scope, users) {
+  $scope.users = users
 });
