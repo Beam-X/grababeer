@@ -1,8 +1,12 @@
 angular.module('starter.controllers', [])
 
-.controller('TabsCtrl', function($log, $rootScope, currentUser){
+.controller('TabsCtrl', function($log, $rootScope, $scope, $state, currentUser){
   $log.debug('>>TabsCtrl');
   $rootScope.currentUser = currentUser;
+
+  $scope.$on('grababeer:match-request', (e, from) => {
+    $state.go('notification', {user: from.id})
+  })
 })
 
 .controller('ProfileCtrl', function($log, $scope, $state){
@@ -35,7 +39,7 @@ angular.module('starter.controllers', [])
     if (nextUser)
       $state.go('^.match', {user: nextUser.id})
     else
-      $state.go('^.home')
+      $state.go('^.waiting_success')
   }
 
   $scope.ignore = (user) => {
@@ -50,6 +54,18 @@ angular.module('starter.controllers', [])
   }
 })
 
+.controller('NotificationCtrl', function($log, $scope, $state, user){
+  $log.debug('>>NotificationCtrl', user)
+
+  $scope.user = user;
+
+  $scope.reject = (user) => $state.go('tab.home')
+
+  $scope.accept = (user) => {
+    $state.go('tab.home')
+  }
+})
+
 .controller('AccountsCtrl', function($log, $scope, $state, users, Session) {
   $log.debug('>>AccountsCtrl')
   $scope.users = users
@@ -58,4 +74,4 @@ angular.module('starter.controllers', [])
     $state.go('tab.profile')
     $log.debug(user)
   }
-});
+})
