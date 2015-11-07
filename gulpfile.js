@@ -8,6 +8,7 @@ var rename = require('gulp-rename');
 var sh = require('shelljs');
 var jade = require('gulp-jade');
 var babel = require('gulp-babel');
+var plumber = require('gulp-plumber');
 
 var paths = {
   sass: ['./scss/**/*.scss'],
@@ -15,7 +16,13 @@ var paths = {
   js: ['./js/**/*.js']
 };
 
-gulp.task('default', ['sass']);
+gulp.task('default', ['sass', 'jade', 'babel']);
+
+function handleError(err){
+  gutil.beep();
+  console.log(err);
+  this.emit('end');
+}
 
 gulp.task('sass', function(done) {
   gulp.src('./scss/ionic.app.scss')
@@ -32,6 +39,7 @@ gulp.task('sass', function(done) {
 
 gulp.task('jade', function (done) {
   gulp.src(paths.jade)
+    .pipe(plumber({ errorHandler: handleError }))
     .pipe(jade({locals: {}}))
     .pipe(gulp.dest('./www/templates/'))
     .on('end', done);
@@ -39,11 +47,12 @@ gulp.task('jade', function (done) {
 
 gulp.task('babel', function(done) {
   gulp.src(paths.js)
+    .pipe(plumber({ errorHandler: handleError }))
     .pipe(babel({
       presets: ['es2015']
     }))
     .pipe(gulp.dest('./www/js/'))
-    .on('end', done);
+    .on('end', done)
 });
 
 gulp.task('watch', function() {

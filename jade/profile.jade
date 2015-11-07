@@ -2,8 +2,8 @@ ion-view.profileContainer(view-title="Profile")
   ion-content
     ion-list
       ion-item.item-avatar
-        img(ng-src="{{user.picture}}")
-        h1 {{user.name}}
+        img(ng-src="{{currentUser.picture}}")
+        h2 {{currentUser.name}}
       ion-item.item-divider Basic Information
       ion-item.item.item-icon-right
         span Age
@@ -16,17 +16,17 @@ ion-view.profileContainer(view-title="Profile")
 
       //- ----------- Music
       ion-item.item-divider Your Favourite Music
-      ion-toggle(ng-repeat="genre in user.music" ng-model="genre.checked" toggle-class="toggle-energized" ng-checked="genre.checked")
+      ion-toggle(ng-repeat="genre in currentUser.music" ng-model="genre.checked" toggle-class="toggle-energized" ng-checked="genre.checked")
         {{genre.name}}
 
       //- ----------- Sports
       ion-item.item-divider Your Favourite Sports
-      ion-toggle(ng-repeat="sport in user.sports" ng-model="sport.checked" toggle-class="toggle-energized" ng-checked="sport.checked")
+      ion-toggle(ng-repeat="sport in currentUser.sports" ng-model="sport.checked" toggle-class="toggle-energized" ng-checked="sport.checked")
         {{sport.name}}
       
       ion-item.item-divider Other Interests
       ion-item.item.item-icon-right
-        {{user.others}}
+        {{currentUser.others}}
         i.icon.ion-chevron-right
 
       ion-item.profileBtnContainer
