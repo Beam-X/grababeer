@@ -16,7 +16,13 @@ var paths = {
   js: ['./js/**/*.js']
 };
 
-gulp.task('default', ['sass']);
+gulp.task('default', ['sass', 'jade', 'babel']);
+
+function handleError(err){
+  gutil.beep();
+  console.log(err);
+  this.emit('end');
+}
 
 gulp.task('sass', function(done) {
   gulp.src('./scss/ionic.app.scss')
@@ -33,6 +39,7 @@ gulp.task('sass', function(done) {
 
 gulp.task('jade', function (done) {
   gulp.src(paths.jade)
+    .pipe(plumber({ errorHandler: handleError }))
     .pipe(jade({locals: {}}))
     .pipe(gulp.dest('./www/templates/'))
     .on('end', done);
@@ -40,13 +47,7 @@ gulp.task('jade', function (done) {
 
 gulp.task('babel', function(done) {
   gulp.src(paths.js)
-    .pipe(plumber({
-      errorHandler: function(err){
-        gutil.beep();
-        console.log(err);
-        this.emit('end');
-      }
-    }))
+    .pipe(plumber({ errorHandler: handleError }))
     .pipe(babel({
       presets: ['es2015']
     }))
