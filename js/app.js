@@ -98,6 +98,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     url: '/success',
     templateUrl: 'templates/success.html'
   })
+  
+  .state('tab.promo', {
+    url: '/promo',
+    templateUrl: 'templates/promo.html'
+  })
+  
+  .state('tab.checkout', {
+    url: '/checkout',
+    templateUrl: 'templates/checkout.html'
+  })
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/home');

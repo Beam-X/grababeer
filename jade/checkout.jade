@@ -1,0 +1,27 @@
+ion-view(hide-nav-bar="true")
+  ion-content.padding.defaultBkg
+    ion-list
+      .list.card.grabBeerCard
+        ion-item.item.center
+          h2.header Had a good time? 
+        ion-item.item.item-avatar.checkoutItem(style="border-top: 0; padding-top: 1em")
+          img.checkoutImg(src="img/luna.jpeg")
+          h2 Luna Pub
+          p.checkoutLead How was Lunar Pub?
+        ion-item.item.range.range-royal.checkoutRangeItem
+          i.icon.ion-sad-outline
+          input(type="range" name="pub")
+          i.icon.ion-happy
+        ion-item.item.item-avatar.checkoutItem
+          img.checkoutImg(src="img/gia.jpg")
+          h2 Ngo Hoang Gia
+          p.checkoutLead How was your buddy?
+        ion-item.item.range.range-royal.checkoutRangeItem
+          i.icon.ion-sad-outline
+          input(type="range" name="buddy")
+          i.icon.ion-happy
+        ion-item.item
+          button.button.button-block.button-balanced Bring me home
+          button.button.button-block.button-royal Let's do this again
+            
+          

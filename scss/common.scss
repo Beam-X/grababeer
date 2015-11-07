@@ -1,9 +1,26 @@
+@import 'variables';
+
 .center {
   text-align: center;
+}
+
+.grabBeerCard {
+  margin-top: 4.5em;
+  padding-top: 1em;
+  padding-bottom: .7em;
 }
 
 .defaultBkg {
   background-image: url('/img/default_bkg.png');
   background-size: cover;
   background-position: top center;
+}
+
+.header {
+  font-weight: $fontWeight-light;
+}
+
+.fbBtn {
+  background-color: $color-fbBlue !important;
+  border-color: $color-fbBlue !important;
 }

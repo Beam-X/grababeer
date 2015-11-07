@@ -9092,15 +9092,25 @@ a.button {
 .center {
   text-align: center; }
 
+.grabBeerCard {
+  margin-top: 4.5em;
+  padding-top: 1em;
+  padding-bottom: .7em; }
+
 .defaultBkg {
   background-image: url("/img/default_bkg.png");
   background-size: cover;
   background-position: top center; }
 
 .header {
-  color: white;
-  font-size: 2.5em;
   font-weight: 300; }
+
+.fbBtn {
+  background-color: #3b5999 !important;
+  border-color: #3b5999 !important; }
+
+.actionContainer .header {
+  font-size: 2.5em; }
 
 .actionBackground {
   background-image: url("/img/hoian.png");
@@ -9174,6 +9184,21 @@ a.button {
 .buddyName {
   font-size: large !important;
   padding-top: .5em; }
+
+.checkoutImg {
+  width: 2em;
+  height: 2em; }
+
+.checkoutLead {
+  display: inline; }
+
+.checkoutItem {
+  padding-bottom: .2em;
+  border-bottom: 0 !important; }
+
+.checkoutRangeItem {
+  margin-top: -.5em;
+  border-top: 0 !important; }
 
 .profileContainer .ion-chevron-right {
   opacity: .4; }
