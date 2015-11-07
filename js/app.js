@@ -6,7 +6,14 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', [
+  'ionic',
+  'starter.controllers',
+  'starter.services',
+  'firebase',
+])
+
+.constant("FIREBASE_URL", "https://grababeer.firebaseio.com/")
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -21,6 +28,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+  });
+})
+
+.run(function($log, $rootScope, Notifications){
+  $rootScope.$on('grababeer:login', function(e, user){
+    $log.debug('grababeer:login', user.name)
+
+    Notifications.listen(user);
+
+    $rootScope.$on('grababeer:match-request', function(e, from){
+      $log.debug('grababeer:match-request', from.name)
+    })
   });
 })
 
@@ -79,15 +98,21 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       nextUser: (PossibleMatches) => PossibleMatches.next()
     }
   })
-  
+
   .state('tab.waiting_success', {
     url: '/waiting_success',
-    templateUrl: 'templates/waiting_success.html'
+    templateUrl: 'templates/waiting_success.html',
   })
 
   .state('notification', {
-    url: '/notification',
-    templateUrl: 'templates/notification.html'
+    url: '/notification/:user',
+    templateUrl: 'templates/notification.html',
+    controller: 'NotificationCtrl',
+    resolve: {
+      user: ($log, $stateParams, Users) => {
+        return Users.get(parseInt($stateParams.user))
+      }
+    }
   })
 
   .state('tab.success', {

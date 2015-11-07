@@ -1,15 +1,25 @@
 angular.module('starter.services', [])
 
-.factory('Session', function($rootScope, $localStorage, Users){
-  return {
+.factory('Session', function($log, $rootScope, $localStorage, Users){
+  let currentUser = undefined;
+
+  let api = {
     login: (user) => {
+      currentUser = user;
       $localStorage.set('currentUserId', user.id)
+      $rootScope.$broadcast('grababeer:login', user)
     },
 
     currentUser: () => {
-      return Users.get($localStorage.get('currentUserId'))
+      return currentUser;
     }
   }
+
+  let user = Users.get($localStorage.get('currentUserId'))
+  if (user)
+    api.login(user);
+
+  return api;
 })
 
 .factory('PossibleMatches', function(Users){
@@ -28,26 +38,36 @@ angular.module('starter.services', [])
   }
 })
 
-.factory('Matches', function($log){
-  let matches = []
-  return {
-    get: () => {
-      return pending
-    },
-    push: (buddy) => {
-      matches.push({
-        buddy,
-        status: 'pending'
-      })
-    }
-  }
+.factory('MatchesRef', function($log, FIREBASE_URL){
+  return new Firebase(`${FIREBASE_URL}/matches`);
 })
 
-.factory('Notifications', function($log, Matches){
+.factory('Matches', function($log, $firebaseArray, MatchesRef){
+  return $firebaseArray(MatchesRef)
+})
+
+.factory('Notifications', function($rootScope, $log, MatchesRef){
   return {
+    listen: (me) => {
+      let startAt = (new Date().getTime()) - 30 * 1000;
+      MatchesRef
+        .orderByChild('createdAt')
+        .startAt(startAt)
+        .on('child_added', function(snap){
+          let notification = snap.val();
+          $log.debug('child_added', notification);
+          if (notification.buddy.id == me.id)
+            $rootScope.$broadcast('grababeer:match-request', notification.me)
+        })
+    },
+
     requestMatch: (me, buddy) => {
-      $log.debug(`Notifications.requestMatch(me: ${me.name}, buddy: ${buddy.name})`);
-      Matches.push(buddy);
+      MatchesRef.push({
+        me,
+        buddy,
+        createdAt: new Date().getTime(),
+        status: 'pending'
+      })
     }
   }
 })
