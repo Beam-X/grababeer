@@ -28,6 +28,30 @@ angular.module('starter.services', [])
   }
 })
 
+.factory('Matches', function($log){
+  let matches = []
+  return {
+    get: () => {
+      return pending
+    },
+    push: (buddy) => {
+      matches.push({
+        buddy,
+        status: 'pending'
+      })
+    }
+  }
+})
+
+.factory('Notifications', function($log, Matches){
+  return {
+    requestMatch: (me, buddy) => {
+      $log.debug(`Notifications.requestMatch(me: ${me.name}, buddy: ${buddy.name})`);
+      Matches.push(buddy);
+    }
+  }
+})
+
 .factory('$localStorage', function($window){
   return {
     set: (key, value) => {
