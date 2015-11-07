@@ -1,5 +1,11 @@
 angular.module('starter.services', [])
 
+.factory('Session', function(){
+  return {
+    currentUser: null
+  }
+})
+
 .factory('Users', function($q){
   const users = [
     {

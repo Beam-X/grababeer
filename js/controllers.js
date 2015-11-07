@@ -27,6 +27,17 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('AccountsCtrl', function($scope, users) {
+.controller('ProfileCtrl', function($log, $scope, user){
+  $log.debug('>>ProfileCtrl')
+  $log.debug('user', user)
+  $scope.user = user;
+})
+
+.controller('AccountsCtrl', function($log, $scope, $state, users, Session) {
   $scope.users = users
+  $scope.select = (user) => {
+    Session.currentUser = user;
+    $state.go('profile')
+    $log.debug(user)
+  }
 });
