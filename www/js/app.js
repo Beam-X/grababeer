@@ -37,6 +37,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services']).
   }).state('action', {
     url: '/action',
     templateUrl: 'templates/action.html'
+  }).state('match', {
+    url: '/match',
+    templateUrl: 'templates/match.html'
   }).state('tab.chats', {
     url: '/chats',
     views: {

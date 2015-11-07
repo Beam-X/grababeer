@@ -9104,3 +9104,10 @@ a.button {
 
 .actionContainer {
   padding-top: 70%; }
+
+.matchProfilePhoto {
+  border-radius: 50%;
+  padding: 2.5em; }
+
+.matchBtn {
+  width: 5em; }
