@@ -1,8 +1,8 @@
 angular.module('starter.services', [])
 
-.factory('Session', function(){
+.factory('Session', function($rootScope){
   return {
-    currentUser: null
+    login: (user) => $rootScope.currentUser = user
   }
 })
 
