@@ -33,10 +33,22 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   $stateProvider
 
   // setup an abstract state for the tabs directive
-    .state('tab', {
+  .state('tab', {
     url: '/tab',
     abstract: true,
     templateUrl: 'templates/tabs.html'
+  })
+
+  .state('accounts', {
+    url: '/accounts',
+    templateUrl: 'templates/accounts.html',
+    controller: 'AccountsCtrl',
+    resolve: {
+      users: (Users) => Users.list()
+    },
+    data: {
+      skipAuth: true
+    }
   })
 
   .state('profile', {
@@ -44,7 +56,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     templateUrl: 'templates/profile.html',
     controller: 'ProfileCtrl',
     resolve: {
-      user: (Session) => Session.currentUser
+      user: ($rootScope) => $rootScope.currentUser
     }
   })
 
@@ -62,16 +74,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     url: '/notification',
     templateUrl: 'templates/notification.html'
   })
-
-  .state('accounts', {
-    url: '/accounts',
-    templateUrl: 'templates/accounts.html',
-    controller: 'AccountsCtrl',
-    resolve: {
-      users: (Users) => Users.list()
-    }
-  })
-
 
   .state('tab.chats', {
       url: '/chats',
@@ -103,6 +105,25 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/home');
+  $urlRouterProvider.otherwise('/accounts');
+})
 
-});
+.run(function($log, $rootScope, $state){
+  $log.debug('RUN')
+  $rootScope.$on('$stateChangeStart', function(event, toState, fromState, fromParams){
+    $log.debug('$stateChangeStart')
+    $log.debug('toState', toState)
+    $log.debug('fromState', fromState)
+
+    if (toState.data && toState.data.skipAuth){
+      //continue
+    }
+    else {
+      if (!$rootScope.currentUser){
+        $log.debug('forbidden');
+        event.preventDefault();
+        $state.go('accounts');
+      }
+    }
+  });
+})

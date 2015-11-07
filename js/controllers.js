@@ -34,9 +34,10 @@ angular.module('starter.controllers', [])
 })
 
 .controller('AccountsCtrl', function($log, $scope, $state, users, Session) {
+  $log.debug('>>AccountsCtrl')
   $scope.users = users
   $scope.select = (user) => {
-    Session.currentUser = user;
+    Session.login(user);
     $state.go('profile')
     $log.debug(user)
   }
