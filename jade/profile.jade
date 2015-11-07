@@ -32,6 +32,6 @@ ion-view.profileContainer(view-title="Profile")
       ion-item.profileBtnContainer
         .row
           .col.col-30
-            a.button.button-block.button-stable(href="#") Cancel
+            a.button.button-block.button-stable(ui-sref="tab.home") Cancel
           .col.col-70
-            a.button.button.button-block.button-energized(href="#/tab/home") Save
+            button.button.button.button-block.button-energized(ng-click="save(currentUser)") Save

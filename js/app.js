@@ -68,8 +68,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   })
 
   .state('tab.match', {
-    url: '/match',
-    templateUrl: 'templates/match.html'
+    url: '/match/:user',
+    templateUrl: 'templates/match.html',
+    controller: 'MatchCtrl',
+    resolve: {
+      user: ($log, $stateParams, Users) => {
+        $log.debug('resolve params', $stateParams)
+        let user = Users.get(parseInt($stateParams.user))
+
+        $log.debug("DUPA", user)
+        return user
+      },
+
+      nextUser: (PossibleMatches) => PossibleMatches.next()
+    }
   })
   
   .state('tab.waiting_success', {
@@ -87,45 +99,26 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     templateUrl: 'templates/success.html'
   })
 
-  .state('tab.chats', {
-      url: '/chats',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
-        }
-      }
-    })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
-        }
-      }
-    })
-
-  .state('tab.account', {
-    url: '/account',
-    views: {
-      'tab-account': {
-        templateUrl: 'templates/profile.html',
-        controller: 'AccountCtrl'
-      }
-    }
-  });
-
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/home');
 })
 
 .run(function($log, $rootScope, $state, Session){
   $log.debug('RUN')
-  $rootScope.$on('$stateChangeStart', function(event, toState, fromState, fromParams){
-    $log.debug('$stateChangeStart')
-    $log.debug('toState', toState)
-    $log.debug('fromState', fromState)
+  $rootScope.$on('$stateChangeError', (event, toState, toParams, fromState, fromParams, error) => {
+    $log.debug('$stateChangeError', error)
+  })
+
+  $rootScope.$on('$stateChangeSuccess', (event, toState, toParams) => {
+    $log.debug('$stateChangeSuccess');
+    $log.debug('toState', toState.name);
+    $log.debug('toParams', toParams);
+  })
+
+  $rootScope.$on('$stateChangeStart', (event, toState, toParams, fromState, fromParams) => {
+    $log.debug('$stateChangeStart');
+    $log.debug('toState', toState);
+    $log.debug('toParams', toParams);
 
     $log.debug('currentUser', Session.currentUser())
     if (toState.data && toState.data.skipAuth){

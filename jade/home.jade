@@ -3,5 +3,5 @@ ion-view(hide-nav-bar="true")
     .row.actionContainer
       .col.center
         h1.header Welcome to Hoi An, {{currentUser.name}}
-        a.button.button-assertive(href="#/tab/match") LET'S GRAB A BEER
+        a.button.button-assertive(ng-click="letsGrabABeer(currentUser)") LET'S GRAB A BEER
 

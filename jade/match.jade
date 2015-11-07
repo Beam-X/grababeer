@@ -2,15 +2,11 @@ ion-view(hide-nav-bar="true")
   ion-content.padding
     .list.card.center
       .item.item-body
-        img.full-image.matchProfilePhoto(src="img/gia.jpg")
-        h1 Ngo Hoang Gia
-        p 23 years old. Speak English. Loves soccer, R&B and travelling.
+        img.full-image.matchProfilePhoto(ng-src="{{::user.picture}}")
+        h1 {{::user.name}}
+        p {{::user.info}}
         .row.matchBtnContainer
           .col.col-50
-            a(href="#")
-              button.button.button-stable.matchBtn.icon.ion-close-round
+            button.button.button-stable.matchBtn.icon.ion-close-round(ng-click="ignore(user)")
           .col.col-50
-            a(href="/#/tab/waiting_success")
-              button.button.button-assertive.matchBtn.icon.ion-checkmark-round
-
-
+            button.button.button-assertive.matchBtn.icon.ion-checkmark-round(ng-click="match(user)")

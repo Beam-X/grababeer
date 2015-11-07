@@ -14,8 +14,39 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('HomeCtrl', function($log, $scope){
+.controller('HomeCtrl', function($log, $scope, $state, PossibleMatches){
   $log.debug('>>HomeCtrl', $scope.currentUser)
+
+  $scope.letsGrabABeer = (user) => {
+    PossibleMatches.init(user)
+    let next = PossibleMatches.next()
+    $log.debug('next', next)
+    $state.go('^.match', {user: next.id})
+  }
+})
+
+.controller('MatchCtrl', function($log, $scope, $state, user, nextUser){
+  $log.debug('>>MatchCtrl', user)
+  $log.debug('nextUser', nextUser)
+
+  $scope.user = user;
+
+  function next(){
+    if (nextUser)
+      $state.go('^.match', {user: nextUser.id})
+    else
+      $state.go('^.home')
+  }
+
+  $scope.ignore = (user) => {
+    $log.debug('ignore', user);
+    next()
+  }
+
+  $scope.match = (user) => {
+    $log.debug('match', user);
+    next()
+  }
 })
 
 .controller('AccountsCtrl', function($log, $scope, $state, users, Session) {
