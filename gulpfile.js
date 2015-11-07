@@ -7,10 +7,12 @@ var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
 var jade = require('gulp-jade');
+var babel = require('gulp-babel');
 
 var paths = {
   sass: ['./scss/**/*.scss'],
-  jade: ['./jade/**/*.jade']
+  jade: ['./jade/**/*.jade'],
+  js: ['./js/**/*.js']
 };
 
 gulp.task('default', ['sass']);
@@ -35,10 +37,17 @@ gulp.task('jade', function (done) {
     .on('end', done);
 });
 
+gulp.task('babel', function(done) {
+  gulp.src('./js/*.js')
+    .pipe(babel())
+    .pipe(gulp.dest('./www/js/'))
+    .on('end', done);
+});
 
 gulp.task('watch', function() {
   gulp.watch(paths.sass, ['sass']);
   gulp.watch(paths.jade, ['jade']);
+  gulp.watch(paths.js, ['babel']);
 });
 
 gulp.task('install', ['git-check'], function() {

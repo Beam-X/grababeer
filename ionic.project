@@ -3,6 +3,8 @@
   "app_id": "",
   "gulpStartupTasks": [
     "sass",
+    "jade",
+    "babel",
     "watch"
   ],
   "watchPatterns": [
