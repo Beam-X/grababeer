@@ -12,6 +12,22 @@ angular.module('starter.services', [])
   }
 })
 
+.factory('PossibleMatches', function(Users){
+  let matches = undefined;
+  let idx = undefined;
+
+  return {
+    init: (user) => {
+      matches = Users.list().filter((u) => u.id !== user.id)
+      idx = 0
+    },
+
+    next: () => {
+      return matches[idx++]
+    }
+  }
+})
+
 .factory('$localStorage', function($window){
   return {
     set: (key, value) => {
@@ -45,7 +61,8 @@ angular.module('starter.services', [])
         { name: "Basketball", checked: true},
         { name: "Rugby", checked: true},
       ],
-      others: 'Travelling, Jamming'
+      others: 'Travelling, Jamming',
+      info: "24 years old. Speak English. Loves soccer, R&B and travelling.",
     },
     {
       id: 2,
@@ -62,7 +79,9 @@ angular.module('starter.services', [])
         { name: "Basketball", checked: true},
         { name: "Rugby", checked: false},
       ],
-      others: 'Travelling, Arts'
+      others: 'Travelling, Arts',
+      age: 25,
+      info: "25 years old. Speak English. Loves soccer, R&B and travelling.",
     },
     {
       id: 3,
@@ -79,7 +98,8 @@ angular.module('starter.services', [])
         { name: "Basketball", checked: false},
         { name: "Rugby", checked: true},
       ],
-      others: 'Arts'
+      others: 'Arts',
+      info: "35 years old. Speak English. Loves soccer, R&B and travelling.",
     },
     {
       id: 4,
@@ -96,11 +116,12 @@ angular.module('starter.services', [])
         { name: "Basketball", checked: false},
         { name: "Rugby", checked: true},
       ],
-      others: 'Travelling'
+      others: 'Travelling',
+      info: "40 years old. Speak English. Loves soccer, R&B and travelling.",
     }
   ]
   return {
-    list: () => $q.when(users),
+    list: () => users,
     get: (id) => users.filter((u) => u.id === id)[0]
   }
 });
