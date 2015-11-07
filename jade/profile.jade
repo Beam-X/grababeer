@@ -1,0 +1,34 @@
+.row.profileName-container
+  .col
+    ul.list
+      li.item.item-avatar
+        img(src="img/tomek.jpg")
+        h2 Aseem Thakur
+      li.item.item-divider Basic Information
+      li.item
+        span Age
+        span.item-note 28
+      li.item Language
+        span.item-note English, French
+
+      //- ----------- Music
+      li.item.item-divider Your Favourite Music
+      - var all_genres = ['Jazz', 'R&B', 'Pop', 'Rock']
+      each genre in all_genres 
+        li.item.item-toggle
+          = genre 
+          label.toggle.toggle-energized
+            input(type="checkbox")
+            .track
+              .handle
+
+      //- ----------- Sports
+      li.item.item-divider Your Favourite Sports
+      - var all_sports = ['Soccer', 'Basketball', 'Cricket', 'American Football', 'Rugby']
+      each sport in all_sports
+        li.item.item-toggle
+          = sport 
+          label.toggle.toggle-energized
+            input(type="checkbox")
+            .track
+              .handle
