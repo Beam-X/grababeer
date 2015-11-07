@@ -24,3 +24,7 @@
   background-color: $color-fbBlue !important;
   border-color: $color-fbBlue !important;
 }
+
+.tab-item.tab-item-active, .tab-item.active, .tab-item.activated {
+  color: #ffc003 !important;
+}

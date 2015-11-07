@@ -9109,8 +9109,13 @@ a.button {
   background-color: #3b5999 !important;
   border-color: #3b5999 !important; }
 
+.tab-item.tab-item-active, .tab-item.active, .tab-item.activated {
+  color: #ffc003 !important; }
+
 .actionContainer .header {
-  font-size: 2.5em; }
+  color: white;
+  font-size: 2.5em;
+  margin-bottom: .5em; }
 
 .actionBackground {
   background-image: url("/img/hoian.png");

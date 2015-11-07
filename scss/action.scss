@@ -1,7 +1,9 @@
 @import 'variables';
 
 .actionContainer .header {
+  color: $color-white;
   font-size: $fontSize-jumbo;
+  margin-bottom: .5em;
 }
 
 .actionBackground {
