@@ -7,6 +7,10 @@ angular.module('starter.controllers', [])
   $scope.$on('grababeer:match-request', (e, from) => {
     $state.go('notification', {user: from.id})
   })
+
+  $scope.$on('grababeer:match-success', (e, from) => {
+    $state.go('tab.success', {buddy: from.id})
+  })
 })
 
 .controller('ProfileCtrl', function($log, $scope, $state){
@@ -54,7 +58,7 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('NotificationCtrl', function($log, $scope, $state, user){
+.controller('NotificationCtrl', function($log, $scope, $state, user, Notifications){
   $log.debug('>>NotificationCtrl', user)
 
   $scope.user = user;
@@ -62,8 +66,15 @@ angular.module('starter.controllers', [])
   $scope.reject = (user) => $state.go('tab.home')
 
   $scope.accept = (user) => {
-    $state.go('tab.home')
+    Notifications.acceptMatch($scope.currentUser, user);
+    $state.go('tab.success', {buddy: user.id})
   }
+})
+
+.controller('SuccessCtrl', function($log, $scope, buddy){
+  $log.debug('>>SuccessCtrl', buddy)
+
+  $scope.user = buddy;
 })
 
 .controller('AccountsCtrl', function($log, $scope, $state, users, Session) {

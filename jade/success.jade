@@ -13,8 +13,8 @@ ion-view(view-title="Your Appointment")
           h2 to claim your reward
         ion-item.item.item-divider Your buddy
         ion-item.item.item-thumbnail-left.item-icon-right.buddyItem
-          img.buddyPhoto(src="img/gia.jpg")
-          h2.buddyName Ngo Hoang Gia
+          img.buddyPhoto(ng-src="{{::user.picture}}")
+          h2.buddyName {{::user.name}}
           p On his way
           i.icon.ion-ios-telephone-outline
           
