@@ -9092,6 +9092,11 @@ a.button {
 .center {
   text-align: center; }
 
+.defaultBkg {
+  background-image: url("/img/default_bkg.png");
+  background-size: cover;
+  background-position: top center; }
+
 .header {
   color: white;
   font-size: 2.5em;
@@ -9106,13 +9111,45 @@ a.button {
 .actionContainer {
   padding-top: 70%; }
 
+.matchProfileCard {
+  margin-top: 4.5em;
+  padding-top: 1em;
+  padding-bottom: .7em; }
+
 .matchProfilePhoto {
   border-radius: 50%;
   height: 70%;
   width: 70%; }
 
+.profileName {
+  font-weight: 300; }
+
 .matchBtn {
-  width: 5em; }
+  background-size: cover;
+  background-position: center left;
+  height: 3em;
+  width: 10em;
+  display: block; }
+
+.matchBtn .icon {
+  color: white;
+  font-size: x-large; }
+
+.matchBtn--no {
+  background-image: url("/img/no_btn.png");
+  padding-left: .1em;
+  text-align: left; }
+
+.matchBtn--no .icon {
+  left: .7em; }
+
+.matchBtn--yes {
+  background-image: url("/img/yes_btn.png");
+  padding-right: .1em;
+  text-align: right; }
+
+.matchBtn--yes .icon {
+  right: .7em; }
 
 .waitingSuccessBackground {
   background-image: url("/img/hoian.png");

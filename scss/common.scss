@@ -1,3 +1,9 @@
 .center {
   text-align: center;
 }
+
+.defaultBkg {
+  background-image: url('/img/default_bkg.png');
+  background-size: cover;
+  background-position: top center;
+}
