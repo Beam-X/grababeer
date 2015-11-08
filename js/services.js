@@ -74,8 +74,14 @@ angular.module('starter.services', [])
 
     acceptMatch: (buddy, me) => {
       MatchesRef.push({
-        me,
-        buddy,
+        me: {
+          id: me.id,
+          name: me.name
+        },
+        buddy: {
+          id: buddy.id,
+          name: buddy.name
+        },
         createdAt: new Date().getTime(),
         status: 'success'
       })
