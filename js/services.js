@@ -49,15 +49,17 @@ angular.module('starter.services', [])
 .factory('Notifications', function($rootScope, $log, MatchesRef){
   return {
     listen: (me) => {
-      let startAt = (new Date().getTime()) - 30 * 1000;
+      let startAt = (new Date().getTime()) - 10 * 1000;
       MatchesRef
         .orderByChild('createdAt')
         .startAt(startAt)
         .on('child_added', function(snap){
           let notification = snap.val();
           $log.debug('child_added', notification);
-          if (notification.buddy.id == me.id)
-            $rootScope.$broadcast('grababeer:match-request', notification.me)
+          if (notification.buddy.id == me.id && notification.status == 'pending')
+            $rootScope.$broadcast('grababeer:match-request', notification.me);
+          else if (notification.me.id == me.id && notification.status == 'success')
+            $rootScope.$broadcast('grababeer:match-success', notification.buddy);
         })
     },
 
@@ -67,6 +69,21 @@ angular.module('starter.services', [])
         buddy,
         createdAt: new Date().getTime(),
         status: 'pending'
+      })
+    },
+
+    acceptMatch: (buddy, me) => {
+      MatchesRef.push({
+        me: {
+          id: me.id,
+          name: me.name
+        },
+        buddy: {
+          id: buddy.id,
+          name: buddy.name
+        },
+        createdAt: new Date().getTime(),
+        status: 'success'
       })
     }
   }

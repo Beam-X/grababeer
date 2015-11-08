@@ -25,8 +25,8 @@ ion-view(hide-nav-bar="true")
               small 7km
         ion-item(style="border-bottom: 0; padding-bottom: .1em") Your buddy
         ion-item.item.item-thumbnail-left.item-icon-right.buddyItem(style="border-top: 0")
-          img.buddyPhoto(src="img/gia.jpg")
-          h2.buddyName Ngo Hoang Gia
+          img.buddyPhoto(ng-src="{{::user.picture}}")
+          h2.buddyName {{::user.name}}
           .energized On his way
           i.icon.ion-ios-telephone-outline
         ion-item.item(style="border-top: 0")

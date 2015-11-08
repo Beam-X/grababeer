@@ -116,15 +116,21 @@ angular.module('starter', [
   })
 
   .state('tab.success', {
-    url: '/success',
-    templateUrl: 'templates/success.html'
+    url: '/success/:buddy',
+    templateUrl: 'templates/success.html',
+    resolve: {
+      buddy: ($log, $stateParams, Users) => {
+        return Users.get(parseInt($stateParams.buddy))
+      }
+    },
+    controller: 'SuccessCtrl',
   })
-  
+
   .state('tab.promo', {
     url: '/promo',
     templateUrl: 'templates/promo.html'
   })
-  
+
   .state('tab.checkout', {
     url: '/checkout',
     templateUrl: 'templates/checkout.html'
