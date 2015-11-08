@@ -47,6 +47,22 @@ angular.module('starter.services', [])
 })
 
 .factory('Notifications', function($rootScope, $log, MatchesRef){
+  function idAndName(obj){
+    return {
+      id: obj.id,
+      name: obj.name
+    }
+  }
+
+  function buildMatch(me, buddy, status){
+    return {
+      me: idAndName(me),
+      buddy: idAndName(buddy),
+      createdAt: new Date().getTime(),
+      status,
+    }
+  }
+
   return {
     listen: (me) => {
       let startAt = (new Date().getTime()) - 10 * 1000;
@@ -64,27 +80,11 @@ angular.module('starter.services', [])
     },
 
     requestMatch: (me, buddy) => {
-      MatchesRef.push({
-        me,
-        buddy,
-        createdAt: new Date().getTime(),
-        status: 'pending'
-      })
+      MatchesRef.push(buildMatch(me, buddy, 'pending'))
     },
 
     acceptMatch: (buddy, me) => {
-      MatchesRef.push({
-        me: {
-          id: me.id,
-          name: me.name
-        },
-        buddy: {
-          id: buddy.id,
-          name: buddy.name
-        },
-        createdAt: new Date().getTime(),
-        status: 'success'
-      })
+      MatchesRef.push(buildMatch(me, buddy, 'success'))
     }
   }
 })
