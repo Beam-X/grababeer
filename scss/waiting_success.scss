@@ -1,12 +1,10 @@
-.waitingSuccessBackground {
-  background-image: url("/img/hoian.png");
-  background-size: cover;
-  background-position: center center;
-}
-
 .waitingSuccessContainer {
   color: white;
   padding-top: 40%;
   padding-left: .5em;
   padding-right: .5em;
+}
+
+.waitingSuccessContainer .header {
+  color: white;
 }

@@ -9098,9 +9098,10 @@ a.button {
   padding-bottom: .7em; }
 
 .defaultBkg {
-  background-image: url("/img/default_bkg.png");
-  background-size: cover;
-  background-position: top center; }
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; }
 
 .header {
   font-weight: 300; }
@@ -9116,12 +9117,6 @@ a.button {
   color: white;
   font-size: 2.5em;
   margin-bottom: .5em; }
-
-.actionBackground {
-  background-image: url("/img/hoian.png");
-  background-size: cover;
-  background-position: center center;
-  height: 100%; }
 
 .actionContainer {
   padding-top: 70%; }
@@ -9144,6 +9139,7 @@ a.button {
   background-position: center left;
   height: 3em;
   width: 10em;
+  padding: 0;
   display: block; }
 
 .matchBtn .icon {
@@ -9151,31 +9147,33 @@ a.button {
   font-size: x-large; }
 
 .matchBtn--no {
-  background-image: url("/img/no_btn.png");
   padding-left: .1em;
   text-align: left; }
+
+.matchBtn--no img {
+  height: 100%; }
 
 .matchBtn--no .icon {
   left: .7em; }
 
 .matchBtn--yes {
-  background-image: url("/img/yes_btn.png");
   padding-right: .1em;
   text-align: right; }
 
+.matchBtn--yes img {
+  height: 100%; }
+
 .matchBtn--yes .icon {
   right: .7em; }
-
-.waitingSuccessBackground {
-  background-image: url("/img/hoian.png");
-  background-size: cover;
-  background-position: center center; }
 
 .waitingSuccessContainer {
   color: white;
   padding-top: 40%;
   padding-left: .5em;
   padding-right: .5em; }
+
+.waitingSuccessContainer .header {
+  color: white; }
 
 .buddyPhoto {
   width: 80% !important;
@@ -9189,6 +9187,26 @@ a.button {
 .buddyName {
   font-size: large !important;
   padding-top: .5em; }
+
+.xJumboHeader {
+  font-size: 3.5em !important;
+  font-weight: 100; }
+
+.jumboHeader {
+  font-size: 2.5em !important;
+  font-weight: 100 !important; }
+
+.uberLead {
+  padding-left: .5em;
+  font-weight: 300 !important;
+  font-size: x-large !important;
+  position: absolute;
+  display: inline; }
+
+.successCard {
+  margin-top: 0;
+  padding-top: .7em;
+  padding-bottom: .7em; }
 
 .checkoutImg {
   width: 2em;

@@ -1,20 +1,33 @@
-ion-view(view-title="Your Appointment")
-  ion-content.padding.defaultBkg
+ion-view(hide-nav-bar="true")
+  img.defaultBkg(src="img/default_bkg.png")
+  ion-content.padding
     ion-list
-      .list.card.center
+      .list.card.center.successCard
         ion-item
-          h3 AWESOME!
-          h2 Let's grab a beer at
-          h1 LUNA PUB
+          h2 You are all SET!
+          h1.jumboHeader LUNA PUB
           h2 24 Tran Phu Street
         ion-item
           h2 Be there by
-          h1 10:30pm
-          h2 to claim your reward
-        ion-item.item.item-divider Your buddy
-        ion-item.item.item-thumbnail-left.item-icon-right.buddyItem
+          h1.jumboHeader 10:30pm
+          h2 to claim this promo code
+        ion-item.item-divider
+          h2.jumboHeader TGYAL
+        ion-item(style="padding-top: .5em; padding-bottom: .5em")
+          .row
+            .col(style="text-align: left")
+              img.uberLogo(src="img/uber.png" style="width: 1.5em; height: 1.5em")
+              .uberLead Get an Uber
+            .col(style="text-align: right")
+              strong.balanced 20-30 min
+          .row
+            .col(style="text-align: left; padding-left: 2.9em; padding-top: 0; margin-top: -.3em")
+              small 7km
+        ion-item(style="border-bottom: 0; padding-bottom: .1em") Your buddy
+        ion-item.item.item-thumbnail-left.item-icon-right.buddyItem(style="border-top: 0")
           img.buddyPhoto(src="img/gia.jpg")
           h2.buddyName Ngo Hoang Gia
-          p On his way
+          .energized On his way
           i.icon.ion-ios-telephone-outline
-          
+        ion-item.item(style="border-top: 0")
+          button.button.button-light Cancel 

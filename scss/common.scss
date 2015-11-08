@@ -11,9 +11,10 @@
 }
 
 .defaultBkg {
-  background-image: url('/img/default_bkg.png');
-  background-size: cover;
-  background-position: top center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 .header {

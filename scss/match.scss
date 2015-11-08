@@ -21,6 +21,7 @@
   background-position: center left;
   height: 3em;
   width: 10em;
+  padding: 0;
   display: block;
 }
 
@@ -30,9 +31,12 @@
 }
 
 .matchBtn--no {
-  background-image: url("/img/no_btn.png");
   padding-left: .1em;
   text-align: left;
+}
+
+.matchBtn--no img {
+  height: 100%;
 }
 
 .matchBtn--no .icon {
@@ -40,9 +44,12 @@
 }
 
 .matchBtn--yes {
-  background-image: url("/img/yes_btn.png");
   padding-right: .1em;
   text-align: right;
+}
+
+.matchBtn--yes img {
+  height: 100%;
 }
 
 .matchBtn--yes .icon {

@@ -1,5 +1,6 @@
 ion-view(hide-nav-bar="true")
-  ion-content.padding.defaultBkg
+  img.defaultBkg(src="img/default_bkg.png")
+  ion-content.padding
     .list.card.matchProfileCard.center
       .item.item-body
         img.full-image.matchProfilePhoto(ng-src="{{::user.picture}}")
@@ -8,7 +9,9 @@ ion-view(hide-nav-bar="true")
         .row.matchBtnContainer
           .col.col-50
             a.matchBtn.matchBtn--no.item.item-icon-left(ng-click="ignore(user)")
+              img(src="/img/no_btn.png")
               i.icon.ion-close-round
           .col.col-50
             a.matchBtn.matchBtn--yes.item.item-icon-right(ng-click="match(user)")
+              img(src="/img/yes_btn.png")
               i.icon.ion-checkmark-round

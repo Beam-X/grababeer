@@ -1,3 +1,5 @@
+@import 'variables';
+
 .buddyPhoto {
   width: 80% !important;
   height: 80% !important;
@@ -12,4 +14,28 @@
 .buddyName {
   font-size: $fontSize-large !important;
   padding-top: .5em;
+}
+
+.xJumboHeader {
+  font-size: $fontSize-xJumbo !important;
+  font-weight: $fontWeight-lighter;
+}
+
+.jumboHeader {
+  font-size: $fontSize-jumbo !important;
+  font-weight: $fontWeight-lighter !important;
+}
+
+.uberLead {
+  padding-left: .5em;
+  font-weight: $fontWeight-light !important;
+  font-size: $fontSize-larger !important;
+  position: absolute;
+  display: inline;
+}
+
+.successCard {
+  margin-top: 0;
+  padding-top: .7em;
+  padding-bottom: .7em;
 }
