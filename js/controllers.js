@@ -71,10 +71,11 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('SuccessCtrl', function($log, $scope, buddy){
-  $log.debug('>>SuccessCtrl', buddy)
+.controller('SuccessCtrl', function($log, $scope, buddy, UBER_LINK, $sce){
+  $log.debug('>>SuccessCtrl', buddy, UBER_LINK)
 
   $scope.user = buddy;
+  $scope.uberLink = $sce.trustAsHtml(UBER_LINK)
 })
 
 .controller('AccountsCtrl', function($log, $scope, $state, users, Session) {

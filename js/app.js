@@ -14,6 +14,8 @@ angular.module('starter', [
 ])
 
 .constant("FIREBASE_URL", "https://grababeer.firebaseio.com/")
+.constant("UBER_LINK", "https://m.uber.com/sign-up?4kevdiyemM-uUibm2yx_iusooY9Gffn8")
+
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
