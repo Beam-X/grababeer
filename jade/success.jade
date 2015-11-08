@@ -3,13 +3,20 @@ ion-view(hide-nav-bar="true")
   ion-content.padding
     ion-list
       .list.card.center.successCard
+        ion-item(style="padding-bottom: .3em; border-bottom: 0")
+          h2(style="font-weight: 200; font-size: 1.8em") You are all SET!
+        ion-item.item.item-thumbnail-left.item-icon-right.buddyItem(style="border-top: 0")
+          img.buddyPhoto(ng-src="{{::user.picture}}")
+          h2.buddyName {{::user.name}}
+          .energized On his way
+          button.button.button-balanced(style="position: absolute; top: 1.2em; right: 1.5em") Chat
         ion-item
-          h2 You are all SET!
-          h1.jumboHeader LUNA PUB
-          h2 24 Tran Phu Street
-        ion-item
-          h2 Be there by
-          h1.jumboHeader 10:30pm
+          .row
+            .col.col-50
+              h2.header LUNA PUB
+              span.item-note 24 Tran Phu Street
+            .col.col-50
+              h2.header 10:30pm
         ion-item(style="padding-bottom: .2em")
           img(src="img/qr.png" style="height: 8em; width: 8em;")
           button.button.button-block.button-assertive(ui-sref="tab.promo") CLAIM YOUR REWARD
@@ -18,11 +25,5 @@ ion-view(hide-nav-bar="true")
           button.button.button-block.uberBtn
             img(src="img/uber.png")
             span REQUEST AN UBER
-        ion-item(style="border-bottom: 0; padding-bottom: .1em") Your buddy
-        ion-item.item.item-thumbnail-left.item-icon-right.buddyItem(style="border-top: 0")
-          img.buddyPhoto(ng-src="{{::user.picture}}")
-          h2.buddyName {{::user.name}}
-          .energized On his way
-          button.button.button-light(style="position: absolute; top: 1.2em; right: 1.5em") Chat
         ion-item.item(style="border-top: 0")
           button.button.button-light Cancel 
