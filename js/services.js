@@ -109,8 +109,8 @@ angular.module('starter.services', [])
   const users = [
     {
       id: 1,
-      name: 'Adam',
-      picture: 'img/adam.jpg',
+      name: 'Quang',
+      picture: 'img/quang.jpg',
       age: 24,
       music: [
         { name: "Jazz", checked: false },
@@ -123,10 +123,28 @@ angular.module('starter.services', [])
         { name: "Rugby", checked: true},
       ],
       others: 'Travelling, Jamming',
-      info: "24 years old. Speak English. Loves soccer, R&B and travelling.",
+      info: "24 years old. Speak English. Loves soccer, basketball, R&B and travelling.",
     },
     {
       id: 2,
+      name: 'Thu',
+      picture: 'img/thu.jpg',
+      age: 35,
+      music: [
+        { name: "Jazz", checked: true },
+        { name: "R&B", checked: true },
+        { name: "Rock", checked: true },
+      ],
+      sports: [
+        { name: "Soccer", checked: true},
+        { name: "Basketball", checked: false},
+        { name: "Rugby", checked: false},
+      ],
+      others: 'Arts',
+      info: "35 years old. Speak English. Loves jazz, R&B, and arts.",
+    },
+    {
+      id: 3,
       name: 'Gia',
       picture: 'img/gia.jpg',
       age: 24,
@@ -143,24 +161,6 @@ angular.module('starter.services', [])
       others: 'Travelling, Arts',
       age: 25,
       info: "25 years old. Speak English. Loves soccer, R&B and travelling.",
-    },
-    {
-      id: 3,
-      name: 'Ben',
-      picture: 'img/ben.png',
-      age: 35,
-      music: [
-        { name: "Jazz", checked: false },
-        { name: "R&B", checked: true },
-        { name: "Rock", checked: true },
-      ],
-      sports: [
-        { name: "Soccer", checked: true},
-        { name: "Basketball", checked: false},
-        { name: "Rugby", checked: true},
-      ],
-      others: 'Arts',
-      info: "35 years old. Speak English. Loves soccer, R&B and travelling.",
     },
     {
       id: 4,

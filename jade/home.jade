@@ -3,5 +3,7 @@ ion-view(hide-nav-bar="true")
   ion-content
     .row.actionContainer
       .col.center
+        a(ui-sref="tab.profile")
+          img(src="{{currentUser.picture}}" style="width: 8em; height: 8em; border-radius: 50%")
         h1.header Welcome to Hoi An, {{currentUser.name}}
         a.button.button-assertive(ng-click="letsGrabABeer(currentUser)") LET'S GRAB A BEER!
