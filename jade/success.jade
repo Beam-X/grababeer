@@ -10,19 +10,13 @@ ion-view(hide-nav-bar="true")
         ion-item
           h2 Be there by
           h1.jumboHeader 10:30pm
-          h2 to claim this promo code
-        ion-item.item-divider
-          h2.jumboHeader TGYAL
+        ion-item(style="padding-bottom: .2em")
+          img(src="img/qr.png" style="height: 8em; width: 8em;")
+          button.button.button-block.button-assertive CLAIM YOUR REWARD
         ion-item(style="padding-top: .5em; padding-bottom: .5em")
-          .row
-            .col(style="text-align: left")
-              img.uberLogo(src="img/uber.png" style="width: 1.5em; height: 1.5em")
-              .uberLead Get an Uber
-            .col(style="text-align: right")
-              strong.balanced 20-30 min
-          .row
-            .col(style="text-align: left; padding-left: 2.9em; padding-top: 0; margin-top: -.3em")
-              small 7km
+          button.button.button-block.uberBtn
+            img(src="img/uber.png")
+            span REQUEST AN UBER
         ion-item(style="border-bottom: 0; padding-bottom: .1em") Your buddy
         ion-item.item.item-thumbnail-left.item-icon-right.buddyItem(style="border-top: 0")
           img.buddyPhoto(ng-src="{{::user.picture}}")
