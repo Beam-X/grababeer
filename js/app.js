@@ -79,6 +79,11 @@ angular.module('starter', [
     templateUrl: 'templates/profile.html',
     controller: 'ProfileCtrl',
   })
+  
+  .state('tab.first', {
+    url: '/first',
+    templateUrl: 'templates/first.html',
+  })
 
   .state('tab.home', {
     url: '/home',
@@ -137,7 +142,7 @@ angular.module('starter', [
   })
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/home');
+  $urlRouterProvider.otherwise('/tab/first');
 })
 
 .run(function($log, $rootScope, $state, Session){
